@@ -11,6 +11,8 @@
     "@commitlint/cli": "^21.2.2",
     "@commitlint/config-conventional": "^21.2.2",
     "@eslint/js": "^10.0.1",
+    "commitizen": "^4.3.2",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^10.9.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
@@ -26,5 +28,30 @@
     ],
     "*.{json,md}": []
   },
-  "type": "module"
+  "type": "module",
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog",
+      "types": {
+        "feat": "新功能",
+        "fix": "修复 Bug",
+        "docs": "文档变更",
+        "style": "代码格式（不影响逻辑）",
+        "refactor": "代码重构",
+        "perf": "性能优化",
+        "test": "测试相关",
+        "chore": "构建/工具依赖变更",
+        "ci": "CI 配置变更",
+        "build": "影响构建系统的变更",
+        "revert": "回退提交"
+      },
+      "scopes": [
+        "admin-dashboard",
+        "web",
+        "shared-ui",
+        "utils",
+        "types"
+      ]
+    }
+  }
 }
