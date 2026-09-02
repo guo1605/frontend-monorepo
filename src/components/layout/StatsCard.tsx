@@ -1,4 +1,4 @@
-import type { StatsCardProps } from "../../types/types";
+import type { StatsCardProps } from "@/types/types";
 
 export default function StatsCard({ label, value }: StatsCardProps) {
 

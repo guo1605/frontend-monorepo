@@ -1,8 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import AdminLayout from "../layouts/AdminLayout";
-import Dashboard from "../pages/DashboardPage";
-import UserListPage from "../pages/users/UserListPage";
-import NotFoundPage from "../pages/NotFoundPage";
+import AdminLayout from "@/layouts/AdminLayout";
+import Dashboard from "@/pages/DashboardPage";
+import UserListPage from "@/pages/users/UserListPage";
+import NotFoundPage from "@/pages/NotFoundPage";
 
 export default function AdminRoute() {
   return (

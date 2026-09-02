@@ -1,10 +1,10 @@
-import StatsCard from "../components/layout/StatsCard";
+import StatsCard from "@/components/layout/StatsCard";
 
-const dashboardStats = {
-  totalUsers: 120,
-  activeUsers: 80,
-  totalOrders: 356,
-};
+// const dashboardStats = {
+//   totalUsers: 120,
+//   activeUsers: 80,
+//   totalOrders: 356,
+// };
 
 export default function Dashboard() {
 
