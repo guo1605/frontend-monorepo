@@ -1,0 +1,17 @@
+.sidebar {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(140, 168, 223);
+  color: rgb(254, 254, 254);
+
+  .sidebar-logo {
+    padding: 20px;
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
