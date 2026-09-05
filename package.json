@@ -5,6 +5,10 @@
     "dev:admin": "pnpm --filter admin-dashboard dev",
     "build:admin": "pnpm --filter admin-dashboard build",
     "lint:admin": "pnpm --filter admin-dashboard lint",
+    "build": "pnpm run -r build",
+    "lint": "pnpm run -r lint",
+    "type-check": "pnpm run -r type-check",
+    "test:ci": "pnpm run -r test:ci",
     "prepare": "husky"
   },
   "devDependencies": {

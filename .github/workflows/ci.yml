@@ -1,0 +1,71 @@
+name: CI
+
+# 1. 触发条件：push 到主干或 dev，以及所有 PR
+on:
+  push:
+    branches: [master, develop]
+  pull_request:
+    branches: [master, develop]
+
+# 2. 环境变量（可选）
+env:
+  NODE_VERSION: '22'            # 你使用的 Node 版本
+
+# 3. 任务定义
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest       # 使用 Ubuntu 环境（启动最快）
+    steps:
+      # 第一步：拉取代码
+      - name: Checkout code
+        uses: actions/checkout@v4
+        # 对于 Monorepo，深度克隆一般不需要，默认即可
+
+      # 第二步：安装 Node
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      # 第三步：安装 pnpm（官方 Action）
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9               # 你的 pnpm 版本
+
+      # 第四步：获取缓存（至关重要，加速 CI）
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      # 第五步：安装依赖（CI 环境必须使用 --frozen-lockfile）
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 第六步：代码检查（Lint）
+      - name: Run Lint
+        run: pnpm run lint               # 如果你在根 package.json 配置了 lint
+        # 如果你没有根 lint，可以改为：
+        # run: pnpm --filter ... lint
+
+      # 第七步：类型检查
+      - name: Run Type Check
+        run: pnpm run type-check         # tsc --noEmit
+
+      # 第八步：运行单元测试
+      # - name: Run Tests
+      #   run: pnpm run test:ci            # 对应 vitest run
+
+      # 第九步：构建所有子包
+      - name: Run Build
+        run: pnpm run build              # 对应根目录下的构建脚本
