@@ -50,6 +50,9 @@ importers:
 
   apps/admin-dashboard:
     dependencies:
+      '@frontend/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       react:
         specifier: ^19.2.8
         version: 19.2.8
@@ -81,6 +84,8 @@ importers:
       vite:
         specifier: ^8.2.2
         version: 8.2.2(@types/node@24.13.3)(jiti@2.6.1)(yaml@2.9.0)
+
+  packages/utils: {}
 
 packages:
 
