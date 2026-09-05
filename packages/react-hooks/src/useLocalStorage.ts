@@ -4,8 +4,8 @@ import { storage } from '@frontend/utils';
 export function useLocalStorage<T>(key: string, initialValue: T) {
   const [value, setValue] = useState<T>(() => {
     try {
-      const item = storage.get(key);
-      return item ? JSON.parse(item) : initialValue;
+      const item = storage.get(key, initialValue);
+      return item ? item : initialValue;
     } catch (error) {
       console.error(error);
       return initialValue;
