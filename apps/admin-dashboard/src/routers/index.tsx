@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import AdminLayout from "@/layouts/AdminLayout";
-import Dashboard from "@/pages/DashboardPage";
+import Dashboard from "@/pages/dashboard/DashboardPage";
 import UserListPage from "@/pages/users/UserListPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 

@@ -22,10 +22,35 @@
 
 .dashboard {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
 }
 
 .stats-card {
   display: flex;
   flex-direction: column;
+  padding: 20px;
+  border: 2px solid;
+  text-align: left;
+}
+
+.dashboard-header {
+  text-align: left;
+}
+
+.dashboard-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+
+.recenr-users {
+  border: 2px solid;
+  padding: 10px;
+}
+
+.recenr-users-head {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
 }

@@ -1,11 +1,12 @@
-import type { StatsCardProps } from "@/types/types";
+import type { StatsData } from "@/types/types";
 
-export default function StatsCard({ label, value }: StatsCardProps) {
+export default function StatsCard({ label, value, trend }: StatsData) {
 
   return (
     <div className="stats-card">
-      <span>{label}</span>
-      <span>{value}</span>
+      <p>{label}</p>
+      <p>{value}</p>
+      <p>{trend}</p>
     </div>
   );
 }
