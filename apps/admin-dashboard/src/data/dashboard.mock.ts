@@ -32,3 +32,5 @@ export const recentUsers: Users[] = [
     createdAt: '2026-08-29',
   },
 ];
+
+export const mockDashboardData = { stats, recentUsers }

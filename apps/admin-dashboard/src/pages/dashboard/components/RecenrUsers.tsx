@@ -1,6 +1,6 @@
-import type { Users } from "@/types/types";
+import type { RecentUser } from "@/types/dashboard";
 
-export default function RecenrUsers({ users }: { users: Users[] }) {
+export default function RecenrUsers({ users }: { users: RecentUser[] }) {
 
   return (
     <div className="recenr-users">

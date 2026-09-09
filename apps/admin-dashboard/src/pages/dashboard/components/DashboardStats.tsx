@@ -1,5 +1,5 @@
 import type { StatsData } from "@/types/types";
-import StatsCard from "@/components/layout/StatsCard";
+import StatsCard from "./StatsCard";
 
 export default function DashboardStats({ statsDatas }: { statsDatas: StatsData[] }) {
 
