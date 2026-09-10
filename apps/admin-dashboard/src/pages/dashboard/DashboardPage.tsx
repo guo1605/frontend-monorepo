@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import DashboardHeader from "./components/DashboardHeader";
 import DashboardStats from "./components/DashboardStats";
 import RecenrUsers from "./components/RecenrUsers";
@@ -5,7 +6,12 @@ import { useDashboardQuery } from "@/hooks/queries/useDashboardQuery";
 
 export default function Dashboard() {
 
+  const navigate = useNavigate();
   const { data, isPending, isError } = useDashboardQuery();
+
+  const onAllUsers = () => {
+    navigate('/users');
+  };
 
   if (isPending) {
     return (
@@ -22,7 +28,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="dashboard">
+    <div className="dashboard admin-content-main">
 
       <DashboardHeader />
 
@@ -30,7 +36,7 @@ export default function Dashboard() {
       <DashboardStats statsDatas={data.stats} />
 
       {/* 新增用户 */}
-      <RecenrUsers users={data.recentUsers} />
+      <RecenrUsers users={data.recentUsers} onAllUsers={onAllUsers} />
 
     </div>
   );

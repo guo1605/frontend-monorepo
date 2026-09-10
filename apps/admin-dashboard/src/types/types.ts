@@ -16,11 +16,10 @@ export interface StatsData {
   trend: string;
 }
 
-type UserStatus = "active";
 export interface Users {
   id: string;
   name: string;
   email: string;
-  status: UserStatus;
+  status: 'active' | 'inactive';
   createdAt: string
 }
