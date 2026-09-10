@@ -14,3 +14,35 @@
   display: flex;
   justify-content: space-around;
 }
+
+.user-detail {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.user-detail-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 30px;
+}
+
+.edit-btn {
+  width: 100%;
+  text-align: right;
+}
+
+/*  */
+.link-dedult {
+  text-decoration: none;
+}
+
+.link-btn {
+  text-decoration: none;
+  border: 1px solid;
+  padding: 10px;
+}

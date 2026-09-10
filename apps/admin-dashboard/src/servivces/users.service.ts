@@ -10,3 +10,12 @@ export function getUsers({ page, pageSize }: GetUsersParams) {
     }, 1000);
   });
 }
+
+export function getUserById(id: string) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const user = mockUsersData.filter(item => item.id === id);
+      resolve(user[0]);
+    }, 1000);
+  });
+}

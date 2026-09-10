@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import AdminLayout from "@/layouts/AdminLayout";
 import Dashboard from "@/pages/dashboard/DashboardPage";
 import UserListPage from "@/pages/users/UserListPage";
+import UserDetailPage from "@/pages/users/UserDetailPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 
 export default function AdminRoute() {
@@ -26,6 +27,11 @@ export default function AdminRoute() {
         <Route
           path="/users"
           element={<UserListPage />}
+        />
+
+        <Route
+          path="/users/:id"
+          element={<UserDetailPage />}
         />
 
         <Route
