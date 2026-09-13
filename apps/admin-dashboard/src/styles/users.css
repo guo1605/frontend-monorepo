@@ -46,3 +46,26 @@
   border: 1px solid;
   padding: 10px;
 }
+
+.create-user {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.create-user-form {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 30px;
+}
+
+.create-user-btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}

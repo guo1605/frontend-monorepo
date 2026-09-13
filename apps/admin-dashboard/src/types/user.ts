@@ -25,3 +25,9 @@ export interface ApiError {
   code: number;
   message: string;
 }
+
+export interface UserInput {
+  name: string;
+  email: string;
+  status: UserStatus;
+}

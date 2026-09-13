@@ -3,6 +3,7 @@ import AdminLayout from "@/layouts/AdminLayout";
 import Dashboard from "@/pages/dashboard/DashboardPage";
 import UserListPage from "@/pages/users/UserListPage";
 import UserDetailPage from "@/pages/users/UserDetailPage";
+import CreateUserPage from "@/pages/users/CreateUserPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 
 export default function AdminRoute() {
@@ -32,6 +33,11 @@ export default function AdminRoute() {
         <Route
           path="/users/:id"
           element={<UserDetailPage />}
+        />
+
+        <Route
+          path="/users/new"
+          element={<CreateUserPage />}
         />
 
         <Route

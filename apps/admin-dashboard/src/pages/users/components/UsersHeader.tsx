@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export default function UsersHeader() {
   return (
@@ -7,7 +8,7 @@ export default function UsersHeader() {
         <p>管理系统中的所有用户</p>
       </div>
 
-      <div>新增用户</div>
+      <Link to="/users/new" className="link-btn">新增用户</Link>
     </div>
   );
 }
