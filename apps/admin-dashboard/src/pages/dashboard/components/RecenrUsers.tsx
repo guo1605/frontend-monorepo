@@ -1,4 +1,5 @@
 import type { RecentUser } from "@/types/dashboard";
+import { Link } from "react-router-dom";
 
 export default function RecenrUsers({ users, onAllUsers }: { users: RecentUser[], onAllUsers: () => void }) {
 
@@ -22,7 +23,12 @@ export default function RecenrUsers({ users, onAllUsers }: { users: RecentUser[]
         <tbody>
           {users.map(item => {
             return <tr key={item.id}>
-              <td>{item.name}</td>
+              <td>
+                <Link to={`/users/${item.id}`} className="link-btn">
+                  {item.name}
+                </Link>
+              </td>
+
               <td>{item.email}</td>
               <td>{item.status}</td>
               <td>{item.createdAt}</td>

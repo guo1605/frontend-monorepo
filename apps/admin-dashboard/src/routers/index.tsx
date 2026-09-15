@@ -5,6 +5,7 @@ import UserListPage from "@/pages/users/UserListPage";
 import UserDetailPage from "@/pages/users/UserDetailPage";
 import CreateUserPage from "@/pages/users/CreateUserPage";
 import NotFoundPage from "@/pages/NotFoundPage";
+import EditUserPage from "@/pages/users/EditUserPage";
 
 export default function AdminRoute() {
   return (
@@ -38,6 +39,11 @@ export default function AdminRoute() {
         <Route
           path="/users/new"
           element={<CreateUserPage />}
+        />
+
+        <Route
+          path="/users/:id/edit"
+          element={<EditUserPage />}
         />
 
         <Route

@@ -1,6 +1,6 @@
 import { mockDashboardData } from "@/data/dashboard.mock";
 import { mockUsersData } from "@/data/users.mock";
-import type { GetUsersParams, UserInput } from "@/types/user";
+import type { GetUsersParams, UpdateUserInput, User, UserInput } from "@/types/user";
 import { formatDate } from '@frontend/utils';
 
 export function getUsers({ page, pageSize }: GetUsersParams) {
@@ -31,6 +31,32 @@ export function createUser(userInpt: UserInput) {
       mockUsersData.push(newUser);
       mockDashboardData.recentUsers.push(newUser);
       reslove(newUser);
+    });
+  });
+}
+
+export function editUser(updateuserInpt: UpdateUserInput) {
+  if (updateuserInpt.id === undefined) {
+    return new Promise((reject) => {
+      reject("id 为undefind");
+    });
+  }
+  const createdAt = formatDate(Date.now())
+  const updateUser = { ...updateuserInpt, createdAt };
+
+  const updateFn = (usersArr: User[]) => {
+    const index = usersArr.findIndex(user => user.id === updateUser.id);
+    if (index !== -1) {
+      usersArr[index] = updateUser;
+    }
+  }
+
+  return new Promise((reslove) => {
+    setTimeout(() => {
+      updateFn(mockUsersData);
+      updateFn(mockDashboardData.recentUsers);
+
+      reslove(updateUser);
     });
   });
 }

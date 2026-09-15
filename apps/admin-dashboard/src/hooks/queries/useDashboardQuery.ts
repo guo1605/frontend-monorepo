@@ -4,7 +4,7 @@ import { getDashboard } from "@/servivces/dashboard";
 
 export function useDashboardQuery(): UseQueryResult<DashboardData, ApiError> {
   return useQuery({
-    queryKey: [''],
+    queryKey: ['dashboard'],
     queryFn: getDashboard
   });
 

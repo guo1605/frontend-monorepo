@@ -31,3 +31,10 @@ export interface UserInput {
   email: string;
   status: UserStatus;
 }
+
+export interface UpdateUserInput {
+  id: string;
+  name: string;
+  email: string;
+  status: UserStatus;
+}
