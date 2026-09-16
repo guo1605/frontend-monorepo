@@ -6,8 +6,8 @@ export function useEditUser() {
 
   const mutation = useMutation({
     mutationFn: editUser,
-    onSuccess: (_, variables) => {
-      queryClirnt.invalidateQueries({
+    onSuccess: async (_, variables) => {
+      await queryClirnt.invalidateQueries({
         queryKey: ['users', variables.id]
       });
       queryClirnt.invalidateQueries({

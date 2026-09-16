@@ -31,7 +31,7 @@ export function createUser(userInpt: UserInput) {
       mockUsersData.push(newUser);
       mockDashboardData.recentUsers.push(newUser);
       reslove(newUser);
-    });
+    }, 1000);
   });
 }
 
@@ -57,6 +57,24 @@ export function editUser(updateuserInpt: UpdateUserInput) {
       updateFn(mockDashboardData.recentUsers);
 
       reslove(updateUser);
-    });
+    }, 1000);
+  });
+}
+
+export function deleteUser(id: string) {
+  const deleteFn = (usersArr: User[]) => {
+    const index = usersArr.findIndex(user => user.id === id);
+    if (index !== -1) {
+      usersArr.splice(index, 1);
+    }
+  }
+
+  return new Promise((reslove) => {
+    setTimeout(() => {
+      deleteFn(mockUsersData);
+      deleteFn(mockDashboardData.recentUsers);
+
+      reslove(mockUsersData);
+    }, 1000);
   });
 }
