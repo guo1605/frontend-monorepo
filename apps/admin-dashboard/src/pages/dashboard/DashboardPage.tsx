@@ -3,6 +3,9 @@ import DashboardHeader from "./components/DashboardHeader";
 import DashboardStats from "./components/DashboardStats";
 import RecenrUsers from "./components/RecenrUsers";
 import { useDashboardQuery } from "@/hooks/queries/useDashboardQuery";
+import LoadingState from "@/components/common/LoadingState";
+import ErrorState from "@/components/common/ErrorState";
+import EmptyState from "@/components/common/EmptyState";
 
 export default function Dashboard() {
 
@@ -14,17 +17,11 @@ export default function Dashboard() {
   };
 
   if (isPending) {
-    return (
-      <div>
-        加载中...
-      </div>
-    );
+    return (<LoadingState />);
   }
 
   if (isError || !data) {
-    return (
-      <div>加载失败</div>
-    );
+    return <ErrorState />;
   }
 
   return (
@@ -36,7 +33,12 @@ export default function Dashboard() {
       <DashboardStats statsDatas={data.stats} />
 
       {/* 新增用户 */}
-      <RecenrUsers users={data.recentUsers} onAllUsers={onAllUsers} />
+      {data.recentUsers.length === 0 ?
+        <EmptyState message="暂无新增用户" />
+        :
+        <RecenrUsers users={data.recentUsers} onAllUsers={onAllUsers} />
+      }
+
 
     </div>
   );

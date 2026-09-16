@@ -1,10 +1,14 @@
 import { useUsersQuery } from "@/hooks/queries/useUsersQuery";
-import UsersHeader from "./components/UsersHeader";
-import UserTable from "./components/UsersTable";
-import UsersFooter from "./components/UsersFooter";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import '@/styles/users.css'
 import { useDeleteUser } from "@/hooks/queries/useDeleteUser";
+import PageHeader from "@/components/common/PageHeader";
+import UserTable from "../../components/user/UsersTable";
+import UsersFooter from "./components/UsersFooter";
+import LoadingState from "@/components/common/LoadingState";
+import ErrorState from "@/components/common/ErrorState";
+import EmptyState from "@/components/common/EmptyState";
 
 export default function UserListPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,27 +42,28 @@ export default function UserListPage() {
   }
 
   if (isQuerying) {
-    return (
-      <div>
-        加载中...
-      </div>
-    )
+    return (<LoadingState />);
   }
 
   if (isError) {
-    return (
-      <div>
-        加载失败
-      </div>
-    )
+    return <ErrorState />;
+  }
+
+  if (data.data.length === 0) {
+    return <EmptyState message="暂无用户" />
   }
 
   return (
     <div className="admin-content-main">
-      <UsersHeader />
+      <PageHeader
+        title="用户管理"
+        pageText="管理系统中的所有用户"
+        action={<Link to="/users/new" className="link-btn">新增用户</Link>}
+      />
 
       <UserTable
         users={data.data}
+        isAction={true}
         deletingID={deletingID}
         isDeleting={isDeleting}
         onDel={onDel}
