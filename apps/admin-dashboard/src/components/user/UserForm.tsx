@@ -1,4 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from 'zod';
 
@@ -25,10 +26,17 @@ export default function UserForm({
   user = { name: '', email: '', status: 'active' },
   isDisabled, onSubmit, submitText, onCancel
 }: UserFormProps) {
-  const { register, handleSubmit, formState: { errors } } = useForm<UserInput>({
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<UserInput>({
     resolver: zodResolver(userSchema),
     defaultValues: user
-  })
+  });
+
+  // 异步刷新用户数据
+  useEffect(() => {
+    if (!user) return;
+
+    reset(user);
+  }, [user, reset]);
 
   return (
     <form className='user-form' onSubmit={handleSubmit(onSubmit)}>
@@ -49,9 +57,9 @@ export default function UserForm({
       {errors.email && <span>{errors.email.message}</span>}
 
       <label htmlFor="user-form-status">状态</label>
-      <select id="user-form-statu" {...register('status')}>
+      <select id="user-form-status" {...register('status')}>
         <option value="active">正常</option>
-        <option value="inactive">失效</option>
+        <option value="inactive">停用</option>
       </select>
 
       <div className="create-user-btns">

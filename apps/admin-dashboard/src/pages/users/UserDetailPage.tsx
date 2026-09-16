@@ -4,6 +4,7 @@ import UserDetailCard from "./components/UserDetailCard";
 import PageHeader from "@/components/common/PageHeader";
 import LoadingState from "@/components/common/LoadingState";
 import ErrorState from "@/components/common/ErrorState";
+import EmptyState from "@/components/common/EmptyState";
 
 export default function UserDetailPage() {
   const { id } = useParams();
@@ -18,8 +19,13 @@ export default function UserDetailPage() {
     return (<LoadingState />);
   }
 
-  if (isError && !data) {
+  if (isError) {
     return <ErrorState />;
+  }
+
+  // 未查询到用户数据
+  if (!data) {
+    return <EmptyState message="查无此用户  " />;
   }
 
   return (
