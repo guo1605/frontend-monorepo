@@ -10,9 +10,7 @@ export interface User {
 
 export interface UsersResponse {
   data: User[];
-  total: number;
-  page: number;
-  pageSize: number;
+  pageTotal: number;
 }
 
 export interface GetUsersParams {

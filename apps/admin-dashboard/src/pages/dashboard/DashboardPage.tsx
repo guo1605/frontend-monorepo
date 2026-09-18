@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import DashboardHeader from "./components/DashboardHeader";
 import DashboardStats from "./components/DashboardStats";
-import RecenrUsers from "./components/RecenrUsers";
+import RecentUsers from "./components/RecentUsers";
 import { useDashboardQuery } from "@/hooks/queries/useDashboardQuery";
 import LoadingState from "@/components/common/LoadingState";
 import ErrorState from "@/components/common/ErrorState";
@@ -36,7 +36,7 @@ export default function Dashboard() {
       {data.recentUsers.length === 0 ?
         <EmptyState message="暂无新增用户" />
         :
-        <RecenrUsers users={data.recentUsers} onAllUsers={onAllUsers} />
+        <RecentUsers users={data.recentUsers} onAllUsers={onAllUsers} />
       }
 
 

@@ -53,12 +53,12 @@
   padding: 20px 0;
 }
 
-.recenr-users {
+.recent-users {
   border: 2px solid;
   padding: 10px;
 }
 
-.recenr-users-head {
+.recent-users-head {
   display: flex;
   justify-content: space-between;
   padding-bottom: 20px;

@@ -1,6 +1,6 @@
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
 import type { DashboardData, ApiError } from "@/types/dashboard";
-import { getDashboard } from "@/servivces/dashboard";
+import { getDashboard } from "@/services/dashboard";
 
 export function useDashboardQuery(): UseQueryResult<DashboardData, ApiError> {
   return useQuery({

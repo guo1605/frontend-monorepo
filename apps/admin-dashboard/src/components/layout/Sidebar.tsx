@@ -1,14 +1,13 @@
 import { NavLink } from "react-router-dom";
 import "@/styles/sidebar.css"
 
-const appTilte = import.meta.env.VITE_APP_TITLE;
+const appTitle = import.meta.env.VITE_APP_TITLE;
 
-console.log('----', appTilte);
 export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
-        {appTilte}
+        {appTitle}
       </div>
 
       <nav className="sidebar-nav">

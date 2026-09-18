@@ -1,26 +1,9 @@
+import type { User } from "./user";
 export interface DashboardStats {
   totalUsers: number;
   activeUser: number;
   newUsers: number;
   growthRate: number;
-}
-
-export interface RecentUser {
-  id: string;
-  name: string;
-  email: string;
-  status: 'active' | 'inactive';
-  createdAt: string;
-}
-
-export interface UserGrowthData {
-  date: string;
-  value: number;
-}
-
-export interface UserStatusData {
-  status: string;
-  value: number;
 }
 
 export interface StatsData {
@@ -29,11 +12,10 @@ export interface StatsData {
   trend: string;
 }
 
+export type RecentUsers = User[];
 export interface DashboardData {
   stats: StatsData[];
-  recentUsers: RecentUser[];
-  userGrowth: UserGrowthData[];
-  userStatus: UserStatusData[];
+  recentUsers: RecentUsers;
 }
 
 // 统一错误类型（后端通常返回 { code, message }）

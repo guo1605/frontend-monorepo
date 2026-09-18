@@ -2,7 +2,7 @@ import type { User } from "@/types/user";
 import { Link } from "react-router-dom";
 import StatusTag from "../common/StatusTag";
 
-export default function UserTable({ users, deletingID, isDeleting, onDel, isAction = false }:
+export default function UsersTable({ users, deletingID, isDeleting, onDel, isAction = false }:
   {
     users: User[],
     deletingID?: string | null,

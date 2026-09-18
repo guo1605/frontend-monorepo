@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useCreatUser } from "@/hooks/queries/useCreateUser";
+import { useCreateUser } from "@/hooks/mutations/useCreateUser";
 import PageHeader from "@/components/common/PageHeader";
 import UserForm from "@/components/user/UserForm";
 import type { UserInput } from "@/types/user";
@@ -7,10 +7,10 @@ import type { UserInput } from "@/types/user";
 export default function CreateUserPage() {
   const navigate = useNavigate();
 
-  const { creatUser, isPending } = useCreatUser();
+  const { createUser, isPending } = useCreateUser();
 
   const onSubmit = (userInput: UserInput) => {
-    creatUser(userInput, {
+    createUser(userInput, {
       onSuccess: () => {
         navigate('/users');
       }

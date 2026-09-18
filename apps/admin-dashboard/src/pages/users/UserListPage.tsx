@@ -2,9 +2,9 @@ import { useUsersQuery } from "@/hooks/queries/useUsersQuery";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import '@/styles/users.css'
-import { useDeleteUser } from "@/hooks/queries/useDeleteUser";
+import { useDeleteUser } from "@/hooks/mutations/useDeleteUser";
 import PageHeader from "@/components/common/PageHeader";
-import UserTable from "../../components/user/UsersTable";
+import UsersTable from "../../components/user/UsersTable";
 import UsersFooter from "./components/UsersFooter";
 import LoadingState from "@/components/common/LoadingState";
 import ErrorState from "@/components/common/ErrorState";
@@ -35,7 +35,13 @@ export default function UserListPage() {
 
       setDeletingID(id);
       deleteUser(id, {
+        onSuccess: () => {
+          if (data?.data.length === 1) {
+            setCurrentPage(prev => prev - 1);
+          }
+        },
         onSettled: () => setDeletingID(null), // 成功或失败都重置
+
       });
 
     }
@@ -61,7 +67,7 @@ export default function UserListPage() {
         action={<Link to="/users/new" className="link-btn">新增用户</Link>}
       />
 
-      <UserTable
+      <UsersTable
         users={data.data}
         isAction={true}
         deletingID={deletingID}
@@ -71,7 +77,7 @@ export default function UserListPage() {
 
       <UsersFooter
         page={currentPage}
-        total={data.total}
+        total={data.pageTotal}
         onPrevious={onPrevious}
         onNext={onNext}
       />

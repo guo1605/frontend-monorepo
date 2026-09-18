@@ -1,4 +1,4 @@
-import type { StatsData, Users } from "@/types/types";
+import type { StatsData, RecentUsers } from "@/types/dashboard";
 
 export const stats: StatsData[] = [
   {
@@ -23,7 +23,7 @@ export const stats: StatsData[] = [
   },
 ];
 
-export const recentUsers: Users[] = [
+export const recentUsers: RecentUsers = [
   {
     id: '1',
     name: 'Tom',

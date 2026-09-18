@@ -1,26 +1,26 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { editUser } from "@/servivces/users.service";
+import { editUser } from "@/services/users.service";
 
 export function useEditUser() {
-  const queryClirnt = useQueryClient();
+  const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: editUser,
     onSuccess: async (_, variables) => {
-      await queryClirnt.invalidateQueries({
+      await queryClient.invalidateQueries({
         queryKey: ['users', variables.id]
       });
-      queryClirnt.invalidateQueries({
+      queryClient.invalidateQueries({
         queryKey: ['users']
       });
-      queryClirnt.invalidateQueries({
+      queryClient.invalidateQueries({
         queryKey: ['dashboard']
       });
     }
   });
 
   return {
-    editUser: mutation.mutate,
+    updateUser: mutation.mutate,
     isPending: mutation.isPending,
     isError: mutation.isError,
     isSuccess: mutation.isSuccess,

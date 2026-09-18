@@ -1,4 +1,4 @@
-import { getUsers } from "@/servivces/users.service";
+import { getUsers } from "@/services/users.service";
 import type { GetUsersParams, UsersResponse, ApiError } from "@/types/user";
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
 

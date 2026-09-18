@@ -1,4 +1,4 @@
-import type { StatsData } from "@/types/types";
+import type { StatsData } from "@/types/dashboard";
 
 export default function StatsCard({ label, value, trend }: StatsData) {
 
